@@ -75,7 +75,8 @@ export default {
       showHistory: false,
       empty: false,
       search: '',
-      isMeng: 'meng'
+      // isMeng: 'meng',
+       isMeng: ''
     }
   },
   methods: {
@@ -108,6 +109,7 @@ export default {
       })
     },
     toPart() {
+      // debugger;
       var data = {
         param: true
       }

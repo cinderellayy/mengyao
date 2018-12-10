@@ -4,7 +4,8 @@
       <div class="genus-fixed-head">
         <div class="choose-search-head">
           <p> <img src="../../static/img/back.png" class="icon-back" @click="$router.back(-1)">
-            <span>选择科属</span></p>
+             <span v-show="isMeng==''">选择科属</span>
+          <span v-show="isMeng=='meng'" class="meng-language">ᠰᠡᠮᠲᠦ ᠤᠷᠭᠤᠮᠠᠯ ᠬᠦᠰᠦᠨᠦᠭ </span></p>
         </div>
       </div>
        <div class="choosed-genus"><span>当前选中：白芷</span><span class="choose-genus-change" @click="$router.back(-1)">更改</span></div>
@@ -21,6 +22,9 @@ export default {
   name: 'genusChoose',
   data() {
     return {
+      
+           // isMeng: 'meng',
+       isMeng: '',
       userData: [
         {
           "index": "B",
@@ -28,10 +32,16 @@ export default {
             { "name": "bce", "tel": "13333333331" },
             { "name": "b2", "tel": "13333333332" },
             { "name": "b3", "tel": "13333333333" },
-              { "name": "bfgjojh1", "tel": "13333333331" },
+            { "name": "bfgjojh1bfgjojh1bfgjojh1bfgjojh1bfgjojh1bfgjojh1bfgjojh1bfgjojh1", "tel": "13333333331" },
             { "name": "b2", "tel": "13333333332" },
             { "name": "b3", "tel": "13333333333" },
-          ]
+
+            { "name": "bce", "tel": "13333333331" },
+            { "name": "b2", "tel": "13333333332" },
+            { "name": "b3", "tel": "13333333333" },
+            { "name": "bfgjojh1", "tel": "13333333331" },
+            { "name": "b2", "tel": "13333333332" },
+            { "name": "b3", "tel": "13333333333" },          ]
         },
         {
           "index": "C",
@@ -47,6 +57,17 @@ export default {
             { "name": "d1", "tel": "13333333331" },
             { "name": "d2", "tel": "13333333332" },
             { "name": "d3", "tel": "13333333333" },
+            { "name": "b2", "tel": "13333333332" },
+            { "name": "b3", "tel": "13333333333" },
+            { "name": "bfgjojh1", "tel": "13333333331" },
+            { "name": "b2", "tel": "13333333332" },
+            { "name": "b3", "tel": "13333333333" },  
+                        { "name": "b2", "tel": "13333333332" },
+            { "name": "b3", "tel": "13333333333" },
+            { "name": "bfgjojh1", "tel": "13333333331" },
+            { "name": "b2", "tel": "13333333332" },
+            { "name": "我只最后", "tel": "13333333333" },  
+
           ]
         },
         {

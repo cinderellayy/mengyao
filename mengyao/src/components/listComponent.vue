@@ -2,12 +2,14 @@
   <div id="list">
     <ul class="list_user" ref="listuser" @touchmove="bMove=true">
       <li v-for="item in userData">
-        <p>{{item.index}}</p>
-        <ul>
-           <li v-for="user in item.users" class="genus-choose-li" @click="toChoose(user.name)">{{user.name}}
-            <img src="../../static/img/arrow.png" class="list_arrow" v-show="!nochoose">
+        <p>{{item.zimu}}</p>
+        <!-- <div class="list-meng"> -->
+        <ul  :class="{'list-meng':isMeng==true}" >
+           <li v-for="user in item.group_zimu" :class="{'genus-choose-li':isMeng==''}" @click="toChoose(user.name)">{{user.name}}
+            <img src="../../static/img/arrow.png" class="list_arrow" v-show="!nochoose && isMeng==''">
           </li>
         </ul>
+        <!-- </div> -->     
       </li>
     </ul>
         <ul class="list_index"  >
@@ -29,14 +31,16 @@ export default {
   data: function() {
     return {
       bMove: false,
+       // isMeng: 'meng',
+       isMeng: '',
       busVm: '',
       nochoose:this.$route.query.param
     }
   },
   computed: {
     userIndex: function() {
-      console.log(this.userData)
-      console.log(this.filterIndex(this.userData))
+      // console.log(this.userData)
+      // console.log(this.filterIndex(this.userData))
       return this.filterIndex(this.userData);
     }
   },
@@ -48,8 +52,8 @@ export default {
     filterIndex: function(data) {
       var result = [];
       for (var i = 0; i < data.length; i++) {
-        if (data[i].index) {
-          result.push(data[i].index);
+        if (data[i].zimu) {
+          result.push(data[i].zimu);
         }
       }
       return result;
@@ -126,7 +130,9 @@ export default {
   height: 30px;
   line-height: 30px;
 }
-
+#list .list_user ul {
+  margin-right: 30px;
+}
 #list .list_user ul li {
   padding-left: 18px;
   border-bottom: 1px solid #ECECEC;
@@ -182,5 +188,41 @@ export default {
 }
 /*部位列表*/
 
+/*蒙古语*/
 
+ .list-meng {
+    overflow-x: auto;
+    height: 120px;
+    white-space: nowrap;  
+    margin: 0 !important;  
+    margin-right:30px !important;
+     }
+.list-meng   li {    
+      display: inline-block;
+    -moz-writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+    -o-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    /* writing-mode: vertical-lr; */
+    writing-mode: tb-lr;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -webkit-text-orientation: sideways-right;
+    text-orientation: sideways-right;
+    font-family: 'MongolianWhite';
+    border-right: 1px solid #018DAD;
+    border-bottom: 0 !important;
+    /* float: left; */
+    height: 96px;
+    word-wrap: break-word;
+    white-space: initial;
+    padding: 0 12px;
+    margin: 10px 0px;
+        line-height: inherit !important;
+        padding-left: 12px !important;
+    box-sizing: border-box;
+}
+.list-meng   li:last-child {
+  border-right:0;
+}
 </style>

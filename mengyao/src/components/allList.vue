@@ -3,7 +3,9 @@
     <div class="genus-list-fixed-head">
       <div class="search-head">
           <p> <img src="../../static/img/back.png" class="icon-back" @click="$router.back(-1)">
-            <span>药用植物列表</span></p>
+             <span v-show="isMeng==''">药用植物列表</span>
+          <span v-show="isMeng=='meng'" class="meng-language">ᠰᠡᠮᠲᠦ ᠤᠷᠭᠤᠮᠠᠯ ᠬᠦᠰᠦᠨᠦᠭ </span>
+          </p>
       </div>
     </div>
     <div class="all-list-component">
@@ -12,93 +14,36 @@
  </div>
 </template>
 <script>
+import axios from 'axios'
 import myList from './listComponent'
 export default {
   name: 'allList',
   data() {
     return {
-      userData: [
-        {
-          "index": "Z",
-          "users": [
-            { "name": "bce", "tel": "13333333331" },
-            { "name": "b2", "tel": "13333333332" },
-            { "name": "b3", "tel": "13333333333" },
-              { "name": "bfgjojh1", "tel": "13333333331" },
-            { "name": "b2", "tel": "13333333332" },
-            { "name": "b3", "tel": "13333333333" },
-          ]
-        },
-        {
-          "index": "C",
-          "users": [
-            { "name": "c1", "tel": "13333333331" },
-            { "name": "c2", "tel": "13333333332" },
-            { "name": "c3", "tel": "13333333333" },
-          ]
-        },
-        {
-          "index": "D",
-          "users": [
-            { "name": "d1", "tel": "13333333331" },
-            { "name": "d2", "tel": "13333333332" },
-            { "name": "d3", "tel": "13333333333" },
-          ]
-        },
-        {
-          "index": "E",
-          "users": [
-            { "name": "e1", "tel": "13333333331" },
-            { "name": "e2", "tel": "13333333332" },
-            { "name": "e3", "tel": "13333333333" },
-          ]
-        },
-        {
-          "index": "F",
-          "users": [
-            { "name": "f1", "tel": "13333333331" },
-            { "name": "f2", "tel": "13333333332" },
-            { "name": "f3", "tel": "13333333333" },
-          ]
-        },
-        {
-          "index": "G",
-          "users": [
-            { "name": "G1", "tel": "13333333331" },
-            { "name": "G2", "tel": "13333333332" },
-            { "name": "G3", "tel": "13333333333" },
-          ]
-        },
-        {
-          "index": "H",
-          "users": [
-            { "name": "h1", "tel": "13333333331" },
-            { "name": "h2", "tel": "13333333332" },
-            { "name": "h3", "tel": "13333333333" },
-          ]
-        },
-       
-
-      ]
+       // isMeng: 'meng',
+       isMeng: '',
+      userData: []
     }
   },
  components: {
     myList
   },
+   mounted(){
+    this.getInit();
+  },
   methods: {
-    backBtn: function() {
-      alert("123")
-    },
-    homeBtn: function() {
-      alert("123")
-    },
-    confirmBtn: function() {
-      alert("a");
-    },
-    cancelBtn: function() {
-      console.log(this);
-      this.$children[2].$el.style.display = "none"; //此处需要从外级找到
-    }
+   getInit:function (argument) {
+    var self = this;
+      axios.post('/ziyuan.keshu/groupByZimu')
+      .then(function (response) {
+        // debugger;
+        console.log('response',response.data.data);
+        self.userData = response.data.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+   }
   },
 };
 
