@@ -6,6 +6,7 @@ import genusList from '@/components/genusList' //科属分类
 import genusChoose from '@/components/genusChoose' //科属分类选择
 import partList from '@/components/partList' //药用部位列表
 import allList from '@/components/allList' //全部药用列表
+import plantDetail from '@/components/plantDetail' //药用植物详情
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +40,11 @@ export default new Router({
       path: '/allList',
       name: 'allList',
       component: allList
+    },
+    {
+      path: '/plantDetail',
+      name: 'plantDetail',
+      component: plantDetail
     }
   ]
 })

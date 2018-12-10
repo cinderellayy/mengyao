@@ -4,11 +4,14 @@
 }
 
 @color-blue: #018DAD;
+@color-light-blue:#CFE6EC;
 
 .bg-blue {
   background-color: #cfe6ec !important;
 }
-
+.bg-light-blue {
+   background-color: #F0F9FB;
+}
 .overflow {
   overflow: hidden;
 }
@@ -331,7 +334,16 @@
   z-index: 999;
 
 }
-
+.plant-detail-fixed-head {
+  background: url(/static/img/detail_head.png);
+   background-size: 100% 100%;
+  height: 90px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
 .part-fixed {
   height: 147px !important;
 }
@@ -376,6 +388,30 @@
   box-shadow: 0 3px 8px rgba(1, 141, 173, .69);
 }
 
+//药植物详情
+.plant-detail-content {
+  margin-top: 100px;
+  color: @color-blue;
+}
+.plant-detail-listTitle {
+  background-color: @color-light-blue;
+  text-align: left;
+  padding:5px 14px;
+  margin-top: 10px;
+}
+.plant-detail-img {
+  height: 230px;
+  width: 100%;
+  margin-top: 10px;
+}
+.plant-detail-list-introdance {
+  border-bottom: 1px dashed @color-blue;
+  text-align: left;
+  padding:10px;
+}
+.plant-detail-list-introdance:last-child{
+  border-bottom:0;
+}
 // --------蒙古语------------
 .meng-language {
   -moz-writing-mode: vertical-lr;
@@ -393,3 +429,4 @@
   font-size: 18px;
   // overflow:hidden;
 }
+

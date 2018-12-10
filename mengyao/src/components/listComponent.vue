@@ -5,7 +5,7 @@
         <p>{{item.zimu}}</p>
         <!-- <div class="list-meng"> -->
         <ul  :class="{'list-meng':isMeng==true}" >
-           <li v-for="user in item.group_zimu" :class="{'genus-choose-li':isMeng==''}" @click="toChoose(user.name)">{{user.name}}
+           <li v-for="user in item.group_zimu" :class="{'genus-choose-li':isMeng==''}" @click="toChoose(user.id)">{{user.name}}
             <img src="../../static/img/arrow.png" class="list_arrow" v-show="!nochoose && isMeng==''">
           </li>
         </ul>
@@ -88,10 +88,16 @@ export default {
     },
     toChoose: function(param) {
       var data = {
-        param: param
+        id: param
+      }
+      var path = '';
+      if(this.nochoose==true) {
+       path='/plantDetail';
+      }else {
+        path='/genusChoose';
       }
       this.$router.push({
-        path: '/genusChoose',
+        path: path,
         query: data
       })
     }

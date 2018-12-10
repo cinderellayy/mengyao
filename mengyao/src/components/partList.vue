@@ -49,10 +49,8 @@ export default {
     },
     getInit:function (argument) {
     var self = this;
-      axios.post('/ziyuan.keshu/groupByZimu')
-      .then(function (response) {
-        // debugger;
-        console.log('response',response.data.data);
+      axios.post('/ziyuan.buwei/groupByZimu')
+      .then(function (response) {  
         self.userData = response.data.data;
       })
       .catch(function (error) {
