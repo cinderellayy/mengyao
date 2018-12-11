@@ -20,28 +20,10 @@
           <img src="../../static/img/close.png" class="icon-close" @click="showHistory=false">
         </p>
           <div v-show="isMeng==''">
-            <p>野菊花</p>
-            <p>黄芪</p>
-            <p>杜仲</p>
-            <p>野菊花</p>
-            <p>野菊花</p>
-            <p>黄芪</p>
-            <p>杜仲</p>
-            <p>野菊花</p>
-            <p>黄芪</p>
-            <p>杜仲</p>
+            <p v-for="data in searchHistory" v-text="data"></p>
           </div>
           <div class="meng-search-history" v-show="isMeng=='meng'">
-            <p>ᠮᠣᠩᠭᠣᠯ ᠬᠢᠲᠠᠳ</p>
-            <p>黄芪</p>
-            <p>ᠮᠣᠩᠭᠣᠯ ᠬᠢᠲᠠᠳ</p>
-            <p>野菊花</p>
-            <p>野菊花</p>
-            <p>黄芪</p>
-            <p>杜仲</p>
-            <p>野菊花</p>
-            <p>黄芪</p>
-            <p>杜仲</p>
+            <p v-for="data in searchHistory" v-text="data"></p>
           </div>
       </div>
       <div class="index-bottom" v-show="isMeng==''">
@@ -50,9 +32,10 @@
             <p class="index-bottom-tab" @click="toAll"><img src="../../static/img/toall.png">查看全部</p>
       </div>
       <div class="meng-index-bottom-parent" v-show="isMeng=='meng'">
-        <p class="meng-index-bottom"><img src="../../static/img/keshu.png" @click="toGenus">ᠢᠵᠠᠭᠤᠷ ᠲᠦᠷᠦᠯ ᠠᠩᠭᠢᠯᠠᠯ </p>
-          <p class="meng-index-bottom"><img src="../../static/img/yaoyong.png" @click="toPart">ᠡᠮ ᠳᠦ ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠰᠡᠭ </p>
-            <p class="meng-index-bottom"><img src="../../static/img/toall.png" @click="toAll">ᠪᠠᠶᠢᠴᠠᠭᠠᠨ ᠦᠵᠡᠵᠦ ᠂ ᠪᠦᠬᠦ </p>
+        <p class="meng-index-bottom"><img src="../../static/img/keshu.png" @click="toGenus"><span>ᠢᠵᠠᠭᠤᠷ ᠲᠦᠷᠦᠯ ᠠᠩᠭᠢᠯᠠᠯ</span> </p>
+        <p class="meng-index-bottom"><img src="../../static/img/yaoyong.png" @click="toPart"><span>ᠡᠮ ᠳᠦ ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠰᠡᠭ</span></p>
+        <p class="meng-index-bottom"><img src="../../static/img/toall.png" @click="toAll">
+          <span>ᠪᠠᠶᠢᠴᠠᠭᠠᠨ ᠦᠵᠡᠵᠦ ᠂ ᠪᠦᠬᠦ</span> </p>
       </div>
       <div class="search-empty" v-show="empty">
         <img src="../../static/img/close_grey.png" class="dialog-close" @click="empty=false">
@@ -60,7 +43,7 @@
           <p>非常抱歉您搜索的内容没有结果，</p>
           <p>换个内容搜索一下吧</p>
         </div>
-        <div class="search-empty-content meng-index-title" v-show="isMeng=='meng'" >
+        <div class="search-empty-content meng-index-title" v-show="isMeng=='meng'">
           <p>非常抱歉您搜索的内容没有结果，</p>
           <p>换个内容搜索一下吧</p>
         </div>
@@ -76,7 +59,17 @@ export default {
       empty: false,
       search: '',
       // isMeng: 'meng',
-       isMeng: ''
+      isMeng: $.cookie('isMeng'),
+      searchHistory: []
+
+    }
+  },
+  mounted() {
+    if (!!$.cookie('searchHistory')) {
+      this.searchHistory = $.cookie('searchHistory');
+      this.searchHistory = this.searchHistory.split(',');
+    } else {
+      this.searchHistory = [];
     }
   },
   methods: {
@@ -85,6 +78,11 @@ export default {
         var data = {
           search: this.search
         }
+        // this.searchHistory = this.searchHistory.split(',');
+        this.searchHistory.unshift(this.search);
+        this.searchHistory = this.searchHistory.slice(0, 10);
+        $.cookie('searchHistory', this.searchHistory);
+        console.log('this.searchHistory', this.searchHistory);
         this.$router.push({
           path: '/searchResult',
           query: data

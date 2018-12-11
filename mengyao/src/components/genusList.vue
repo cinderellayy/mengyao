@@ -11,7 +11,7 @@
     <div>
       <my-list :user-data="userData"></my-list> <!-- 传递数据 -->
     </div>
- </div>
+  </div>
 </template>
 <script>
 import axios from 'axios'
@@ -20,30 +20,29 @@ export default {
   name: 'genusList',
   data() {
     return {
-    //isMeng: 'meng',
-      isMeng: '',
-      userData:[]
+      isMeng: $.cookie('isMeng'),
+      userData: []
     }
   },
- components: {
+  components: {
     myList
   },
-  mounted(){
+  mounted() {
     this.getInit();
   },
   methods: {
-   getInit:function (argument) {
-    var self = this;
+    getInit: function(argument) {
+      var self = this;
       axios.post('/ziyuan.keshu/groupByZimu')
-      .then(function (response) {
-        // debugger;
-        console.log('response',response.data.data);
-        self.userData = response.data.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-   }
+        .then(function(response) {
+          // debugger;
+          console.log('response', response.data.data);
+          self.userData = response.data.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   },
 };
 
@@ -51,7 +50,5 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../css/style.css";
-
-
 
 </style>

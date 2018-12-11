@@ -56,8 +56,7 @@ export default {
   name: 'plantDetail',
   data() {
     return {
-      // isMeng: 'meng',
-      isMeng: '',
+     isMeng: $.cookie('isMeng'),
       infoData: '',
       postId: this.$route.query.id
     }

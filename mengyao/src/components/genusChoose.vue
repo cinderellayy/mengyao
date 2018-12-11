@@ -22,9 +22,7 @@ export default {
   name: 'genusChoose',
   data() {
     return {
-      
-           // isMeng: 'meng',
-       isMeng: '',
+      isMeng: $.cookie('isMeng'),
       userData: [
         {
           "index": "B",

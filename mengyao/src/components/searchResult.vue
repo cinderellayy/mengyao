@@ -74,7 +74,7 @@
       <div class="scroll-height" v-show="searchCh">
         <div class="search-list-ch">
           <p class="search-list-ch-title">药用植物名称</p>
-          <div class="search-list-ch-content" :class="{'meng-search-list':isMeng==true}">
+          <div class="search-list-ch-content" :class="{'meng-search-list':isMeng=='meng'}">
             <span  :class="{'yaocai-tab':isMeng==''}">白芷</span>
             <span  :class="{'yaocai-tab':isMeng==''}">白芷</span>
             <span  :class="{'yaocai-tab':isMeng==''}">白芷</span> <span  :class="{'yaocai-tab':isMeng==''}">白芷</span>
@@ -82,7 +82,7 @@
         </div>
         <div class="search-list-ch">
           <p class="search-list-ch-title">药用植物名称</p>
-          <div class="search-list-ch-content" :class="{'meng-search-list':isMeng==true}" >
+          <div class="search-list-ch-content" :class="{'meng-search-list':isMeng=='meng'}" >
             <span :class="{'yaocai-tab':isMeng==''}">白芷</span>
             <span  :class="{'yaocai-tab':isMeng==''}">白芷</span>
             <span  :class="{'yaocai-tab':isMeng==''}">白芷</span> <span  :class="{'yaocai-tab':isMeng==''}">白芷</span>
@@ -106,8 +106,7 @@ export default {
     return {
       searchCh: false,
       searchEn: false,
-       // isMeng: 'meng',
-       isMeng: '',
+      isMeng: $.cookie('isMeng')
     }
   },
   mounted() {

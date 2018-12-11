@@ -4,16 +4,134 @@
 }
 
 @color-blue: #018DAD;
-@color-light-blue:#CFE6EC;
+@color-light-blue: #CFE6EC;
 
 .bg-blue {
   background-color: #cfe6ec !important;
 }
+
 .bg-light-blue {
-   background-color: #F0F9FB;
+  background-color: #F0F9FB;
 }
+
 .overflow {
   overflow: hidden;
+}
+.relative {
+  position:relative;
+}
+//引导页
+.guide-background {
+  // background: url(../../static/img/index_bj.png);
+  background-color: @color-blue;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.guide-content {
+  background: url(../../static/img/guide_content_bg.png);
+  background-size: 100% 100%;
+  color: #fff;
+  width: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 230px;
+  margin-left: -115px;
+  height: 550px;
+  margin-top: -300px;
+
+}
+
+.guide-content-desc {
+  border: 2px solid #fff;
+  width: 120px;
+  box-sizing: border-box;
+  height: 450px;
+  margin-top: 50px;
+  // margin-left: 30px;
+  padding-top: 14px;
+  display: inline-block;
+
+}
+
+.vertical-guide-meng {
+  -moz-writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -o-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  /* writing-mode: vertical-lr; */
+  writing-mode: tb-lr;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-text-orientation: sideways-right;
+  text-orientation: sideways-right;
+  font-family: 'MongolianWhite';
+  display: inline-block;
+  border-right: 1px solid #fff;
+  padding-right: 12px;
+  margin-right: 12px;
+  // vertical-align: top;
+}
+
+.vertical-guide-ch {
+  -moz-writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -o-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  /* writing-mode: vertical-lr; */
+  writing-mode: tb-lr;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+.guide-content-tab {
+  display: inline-block;
+  margin: 0 4px 0 20px;
+
+  p {
+    border: 2px solid #fff;
+    text-align: center;
+    height: 130px;
+    margin-right: 0;
+    display: block;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    width: 30px;
+    line-height: 25px;
+  }
+
+  p:first-child {
+    background-color: #fff;
+    color: @color-blue;
+
+    span {
+      border: 1px solid @color-blue;
+      display: inline-block;
+      height: 124px;
+      width: 24px;
+
+    }
+  }
+
+}
+
+.guide-bottom {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+
+  p:last-child {
+    background: url(../../static/img/guide_bottom_bg.png) no-repeat 50%;
+    background-size: 220px;
+  }
 }
 
 // 首页
@@ -84,11 +202,13 @@
 }
 
 .index-bottom {
-  position: fixed;
-  bottom: 110px;
-  width: 156px;
-  left: 50%;
-  margin-left: -78px;
+  // position: absolute;
+  // bottom: 110px;
+  // width: 156px;
+  // left: 50%;
+  // margin-left: -78px;
+  margin-left: 30%;
+    margin-top: 50%;
 
 }
 
@@ -139,6 +259,7 @@
   -webkit-text-orientation: sideways-right;
   text-orientation: sideways-right;
   font-family: 'MongolianWhite';
+
   img {
     height: 44px;
     width: 44px;
@@ -148,8 +269,10 @@
     box-sizing: border-box;
     border-radius: 50%;
     background-color: #fff;
+    vertical-align: middle;
     -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, .49);
     box-shadow: 0 3px 10px rgba(0, 0, 0, .49);
+    // margin-left:10px;
   }
 }
 
@@ -279,7 +402,7 @@
   box-shadow: 0 3px 10px rgba(1, 141, 173, .69);
   margin-right: 0.36rem;
   overflow: hidden;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .bottom-line {
@@ -334,9 +457,10 @@
   z-index: 999;
 
 }
+
 .plant-detail-fixed-head {
   background: url(/static/img/detail_head.png);
-   background-size: 100% 100%;
+  background-size: 100% 100%;
   height: 90px;
   position: fixed;
   left: 0;
@@ -344,6 +468,7 @@
   top: 0;
   z-index: 999;
 }
+
 .part-fixed {
   height: 147px !important;
 }
@@ -393,25 +518,30 @@
   margin-top: 100px;
   color: @color-blue;
 }
+
 .plant-detail-listTitle {
   background-color: @color-light-blue;
   text-align: left;
-  padding:5px 14px;
+  padding: 5px 14px;
   margin-top: 10px;
 }
+
 .plant-detail-img {
   height: 230px;
   width: 100%;
   margin-top: 10px;
 }
+
 .plant-detail-list-introdance {
   border-bottom: 1px dashed @color-blue;
   text-align: left;
-  padding:10px;
+  padding: 10px;
 }
-.plant-detail-list-introdance:last-child{
-  border-bottom:0;
+
+.plant-detail-list-introdance:last-child {
+  border-bottom: 0;
 }
+
 // --------蒙古语------------
 .meng-language {
   -moz-writing-mode: vertical-lr;
@@ -429,4 +559,3 @@
   font-size: 18px;
   // overflow:hidden;
 }
-

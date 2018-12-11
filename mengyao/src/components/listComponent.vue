@@ -4,8 +4,8 @@
       <li v-for="item in userData">
         <p>{{item.zimu}}</p>
         <!-- <div class="list-meng"> -->
-        <ul  :class="{'list-meng':isMeng==true}" >
-           <li v-for="user in item.group_zimu" :class="{'genus-choose-li':isMeng==''}" @click="toChoose(user.id)">{{user.name}}
+        <ul  :class="{'list-meng':isMeng=='meng'}" >
+           <li v-for="user in item.group_zimu" :class="{'genus-choose-li':isMeng==''}" @click="toChoose(user.id)"  v-text="isMeng=='meng'?user.name_meng:user.name">
             <img src="../../static/img/arrow.png" class="list_arrow" v-show="!nochoose && isMeng==''">
           </li>
         </ul>
@@ -31,8 +31,7 @@ export default {
   data: function() {
     return {
       bMove: false,
-       // isMeng: 'meng',
-       isMeng: '',
+      isMeng: $.cookie('isMeng'),
       busVm: '',
       nochoose:this.$route.query.param
     }
@@ -229,6 +228,6 @@ export default {
     box-sizing: border-box;
 }
 .list-meng   li:last-child {
-  border-right:0;
+  /*border-right:0;*/
 }
 </style>

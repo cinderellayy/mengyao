@@ -30,8 +30,7 @@ export default {
   name: 'partList',
   data() {
     return {
-      // isMeng: 'meng',
-      isMeng: '',
+      isMeng: $.cookie('isMeng'),
       userData: [],
       partTab: '1'
     }
